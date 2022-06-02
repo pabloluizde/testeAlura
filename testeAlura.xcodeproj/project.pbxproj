@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24932B0C2847F70B00B4EAA3 /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24932B0B2847F70A00B4EAA3 /* Refeicao.swift */; };
+		24932B0E2847F76300B4EAA3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24932B0D2847F76300B4EAA3 /* Item.swift */; };
 		24AC38EC283EB33A00FFAA99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38EB283EB33A00FFAA99 /* AppDelegate.swift */; };
 		24AC38EE283EB33A00FFAA99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38ED283EB33A00FFAA99 /* SceneDelegate.swift */; };
 		24AC38F0283EB33A00FFAA99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC38EF283EB33A00FFAA99 /* ViewController.swift */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		240750682845223600A791EF /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		24932B0B2847F70A00B4EAA3 /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
+		24932B0D2847F76300B4EAA3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		24AC38E8283EB33A00FFAA99 /* testeAlura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testeAlura.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24AC38EB283EB33A00FFAA99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24AC38ED283EB33A00FFAA99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +42,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24932B0F2847F7E900B4EAA3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24932B0B2847F70A00B4EAA3 /* Refeicao.swift */,
+				24932B0D2847F76300B4EAA3 /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		24932B102847F80300B4EAA3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24AC38EF283EB33A00FFAA99 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		24932B112847F84300B4EAA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				24AC38F1283EB33A00FFAA99 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		24AC38DF283EB33A00FFAA99 = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +88,11 @@
 			children = (
 				24AC38EB283EB33A00FFAA99 /* AppDelegate.swift */,
 				24AC38ED283EB33A00FFAA99 /* SceneDelegate.swift */,
-				24AC38EF283EB33A00FFAA99 /* ViewController.swift */,
-				24AC38F1283EB33A00FFAA99 /* Main.storyboard */,
+				24932B112847F84300B4EAA3 /* Views */,
+				24932B102847F80300B4EAA3 /* Controllers */,
+				24932B0F2847F7E900B4EAA3 /* Models */,
 				24AC38F4283EB33C00FFAA99 /* Assets.xcassets */,
+				240750682845223600A791EF /* MyPlayground.playground */,
 				24AC38F6283EB33C00FFAA99 /* LaunchScreen.storyboard */,
 				24AC38F9283EB33C00FFAA99 /* Info.plist */,
 			);
@@ -138,9 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24932B0E2847F76300B4EAA3 /* Item.swift in Sources */,
 				24AC38F0283EB33A00FFAA99 /* ViewController.swift in Sources */,
 				24AC38EC283EB33A00FFAA99 /* AppDelegate.swift in Sources */,
 				24AC38EE283EB33A00FFAA99 /* SceneDelegate.swift in Sources */,
+				24932B0C2847F70B00B4EAA3 /* Refeicao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
