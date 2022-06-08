@@ -15,6 +15,7 @@
 		24AC38F3283EB33A00FFAA99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24AC38F1283EB33A00FFAA99 /* Main.storyboard */; };
 		24AC38F5283EB33C00FFAA99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24AC38F4283EB33C00FFAA99 /* Assets.xcassets */; };
 		24AC38F8283EB33C00FFAA99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24AC38F6283EB33C00FFAA99 /* LaunchScreen.storyboard */; };
+		24AD2D282850F42F00CABC73 /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD2D272850F42F00CABC73 /* RefeicoesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		24AC38F4283EB33C00FFAA99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24AC38F7283EB33C00FFAA99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24AC38F9283EB33C00FFAA99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24AD2D272850F42F00CABC73 /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				24AC38EF283EB33A00FFAA99 /* ViewController.swift */,
+				24AD2D272850F42F00CABC73 /* RefeicoesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				24932B0E2847F76300B4EAA3 /* Item.swift in Sources */,
 				24AC38F0283EB33A00FFAA99 /* ViewController.swift in Sources */,
 				24AC38EC283EB33A00FFAA99 /* AppDelegate.swift in Sources */,
+				24AD2D282850F42F00CABC73 /* RefeicoesTableViewController.swift in Sources */,
 				24AC38EE283EB33A00FFAA99 /* SceneDelegate.swift in Sources */,
 				24932B0C2847F70B00B4EAA3 /* Refeicao.swift in Sources */,
 			);
