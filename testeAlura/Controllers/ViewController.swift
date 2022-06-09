@@ -15,7 +15,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: - Atributos
     var delegate: AddRefeicaoDelegate?
-    var itens: [String] = ["Molho", "Queijo", "Pepino", "Salsa"]
+    var itens: [Item] = [Item(nome: "Molho", calorias: 200.0),Item(nome: "Queijo", calorias: 200.0),Item(nome: "Pimenta", calorias: 200.0)]
+    var itemSelecionado: [Item] = []
     
     //MARK: - IBOutlets
     
@@ -27,10 +28,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let celula = tableView.cellForRow(at: indexPath) else {return}
         
+        
         if celula.accessoryType == .none{
             celula.accessoryType = .checkmark
+            
+            let linhaDeTabela = indexPath.row
+            itemSelecionado.append(itens[linhaDeTabela])
         } else {
             celula.accessoryType = .none
+            
+            let item = itens[indexPath.row]
+            if let positions = itemSelecionado.index(of: item){
+                itemSelecionado.remove(at: positions)
+            }
         }
         
     }
@@ -42,11 +52,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celula = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let celula = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
         let linhaDeTabelas = indexPath.row
         let item = itens[linhaDeTabelas]
-        celula.textLabel?.text = item
+        celula.textLabel?.text = "Ingrediente: \(item.nome)"
+        celula.detailTextLabel?.text = "Caloria: \(item.calorias)"
         
         return celula
     }
@@ -54,14 +65,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //MARK: - IBActionS
     
     @IBAction func adicionar(_ sender: Any) {
-
+        
         guard let nomeDaRefeicao = nomeTextField?.text else {
             return
         }
         guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
             return
         }
-        let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade)
+        let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade,itens: itemSelecionado)
+        
+        refeicao.itens = itemSelecionado
         print("comi \(refeicao.nome) e fiquei com a satisfação: \(refeicao.felicidade)")
         
         delegate?.add(refeicao)
