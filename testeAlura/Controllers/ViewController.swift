@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: - Atributos
     var delegate: AddRefeicaoDelegate?
-    var itens: [Item] = [Item(nome: "Molho", calorias: 200.0),Item(nome: "Queijo", calorias: 200.0),Item(nome: "Pimenta", calorias: 200.0)]
+    var itens: [Item] = [Item(nome: "Molho", calorias: 200.0)]
     var itemSelecionado: [Item] = []
     
     //MARK: - IBOutlets
