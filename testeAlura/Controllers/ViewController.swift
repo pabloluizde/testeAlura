@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - IBOutlet
     
-    @IBOutlet weak var itensTableView: UITableView!
+    @IBOutlet weak var itensTableView: UITableView?
     
     //MARK: - Atributos
     var delegate: AddRefeicaoDelegate?
@@ -41,7 +41,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func add(_ item: Item) {
         itens.append(item)
-        itensTableView.reloadData()
+        
+        if let itensTableView = itensTableView {
+            itensTableView.reloadData()
+        } else {
+            let alerta = UIAlertController(title: "Desculpe", message: "Não foi possivel atualizar a tabela", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+            
+            alerta.addAction(ok)
+            present(alerta, animated: true, completion: nil)
+        }
     }
     
     //MARK: - UITableViewDelegate
