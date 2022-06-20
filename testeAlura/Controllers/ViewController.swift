@@ -45,14 +45,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let itensTableView = itensTableView {
             itensTableView.reloadData()
         } else {
-            let alerta = UIAlertController(title: "Desculpe", message: "Não foi possivel atualizar a tabela", preferredStyle: .alert)
-            
-            let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-            
-            alerta.addAction(ok)
-            present(alerta, animated: true, completion: nil)
+            Alerta(controller: self).exibe(title: "Desculpe", mensagem: "Não foi possivel atualizar a tabela")
         }
     }
+    
     
     //MARK: - UITableViewDelegate
     
@@ -93,23 +89,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return celula
     }
     
-    //MARK: - IBActionS
-    
-    @IBAction func adicionar(_ sender: Any) {
-        
+    func recuperaRefeicao() -> Refeicao? {
         guard let nomeDaRefeicao = nomeTextField?.text else {
-            return
+            Alerta(controller: self).exibe(title: "Atenção", mensagem: "Erro ao ler o campo nome")
+            return nil
         }
         guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
-            return
+            Alerta(controller: self).exibe(title: "Atenção", mensagem: "Erro ao ler o campo satisfação")
+            return nil
         }
         let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade,itens: itemSelecionado)
         
         refeicao.itens = itemSelecionado
-        print("comi \(refeicao.nome) e fiquei com a satisfação: \(refeicao.felicidade)")
         
-        delegate?.add(refeicao)
-        navigationController?.popViewController(animated: true)
+        return refeicao
+    
+        
+    }
+    
+    //MARK: - IBActionS
+    
+    @IBAction func adicionar(_ sender: Any) {
+        
+        if let refeicao = recuperaRefeicao() {
+            delegate?.add(refeicao)
+            navigationController?.popViewController(animated: true)
+        } else {
+            Alerta(controller: self).exibe(title: "Alerta", mensagem: "Erro ao ler")
+        }
     }
 }
 

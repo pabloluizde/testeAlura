@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2410DFB328610DD600BE736F /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410DFB228610DD600BE736F /* Alerta.swift */; };
 		243DF07128577F37000F7411 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243DF06F28577F37000F7411 /* AddViewController.swift */; };
 		243DF07228577F37000F7411 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243DF07028577F37000F7411 /* AddViewController.xib */; };
 		24932B0C2847F70B00B4EAA3 /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24932B0B2847F70A00B4EAA3 /* Refeicao.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		240750682845223600A791EF /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2410DFB228610DD600BE736F /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		243DF06F28577F37000F7411 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		243DF07028577F37000F7411 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		24932B0B2847F70A00B4EAA3 /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				24932B0B2847F70A00B4EAA3 /* Refeicao.swift */,
 				24932B0D2847F76300B4EAA3 /* Item.swift */,
+				2410DFB228610DD600BE736F /* Alerta.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2410DFB328610DD600BE736F /* Alerta.swift in Sources */,
 				24932B0E2847F76300B4EAA3 /* Item.swift in Sources */,
 				24AC38F0283EB33A00FFAA99 /* ViewController.swift in Sources */,
 				243DF07128577F37000F7411 /* AddViewController.swift in Sources */,
