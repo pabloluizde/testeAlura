@@ -13,6 +13,20 @@ class RefeicoesTableViewController: UITableViewController, AddRefeicaoDelegate{
     
     var refeicoes = [Refeicao(nome: "Macarrao", felicidade: 5, itens: [])]
     
+    override func viewDidLoad() {
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else{return}
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        
+        
+        do {
+            let dados = try Data(contentsOf: caminho)
+            guard let refeicaoSalva = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else {return}
+            refeicoes = refeicaoSalva
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return refeicoes.count
     }
@@ -49,6 +63,16 @@ class RefeicoesTableViewController: UITableViewController, AddRefeicaoDelegate{
     
     func add(_ refeicao: Refeicao) {
         refeicoes.append(refeicao)
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else{return}
+        let caminho = diretorio.appendingPathComponent("refeicao")
+        
+        do{
+            let dados = try NSKeyedArchiver.archivedData(withRootObject: refeicoes, requiringSecureCoding: false)
+            try dados.write(to: caminho)
+        } catch {
+            print(error.localizedDescription)
+        }
+       
         tableView.reloadData()
     }
     
