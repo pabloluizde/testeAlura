@@ -11,25 +11,12 @@ import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AddRefeicaoDelegate{
     
-    var refeicoes = [Refeicao(nome: "Macarrao", felicidade: 5, itens: [])]
+    var refeicoes: [Refeicao] = []
     
     override func viewDidLoad() {
-        guard let caminho = recuperaCaminho() else {return}
-        
-        do {
-            let dados = try Data(contentsOf: caminho)
-            guard let refeicaoSalva = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as? Array<Refeicao> else {return}
-            refeicoes = refeicaoSalva
-        } catch {
-            print(error.localizedDescription)
-        }
+        refeicoes = RefeicaoDao().recupera()
     }
-    
-    func recuperaCaminho() -> URL? {
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else{return nil}
-        let caminho = diretorio.appendingPathComponent("refeicao")
-         return caminho
-    }
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return refeicoes.count
@@ -67,16 +54,8 @@ class RefeicoesTableViewController: UITableViewController, AddRefeicaoDelegate{
     
     func add(_ refeicao: Refeicao) {
         refeicoes.append(refeicao)
-        guard let caminho = recuperaCaminho() else {return}
-        
-        do{
-            let dados = try NSKeyedArchiver.archivedData(withRootObject: refeicoes, requiringSecureCoding: false)
-            try dados.write(to: caminho)
-        } catch {
-            print(error.localizedDescription)
-        }
-       
         tableView.reloadData()
+        RefeicaoDao().save(refeicoes)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

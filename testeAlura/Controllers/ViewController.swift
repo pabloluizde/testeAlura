@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: - Atributos
     var delegate: AddRefeicaoDelegate?
-    var itens: [Item] = [Item(nome: "Molho", calorias: 200.0)]
+    var itens: [Item] = []
     var itemSelecionado: [Item] = []
     
     //MARK: - IBOutlets
@@ -32,18 +32,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         let botaoAdicionarItem = UIBarButtonItem(title: "adicionar", style: .plain, target: self, action: #selector(adicionarItem))
         navigationItem.rightBarButtonItem = botaoAdicionarItem
-    
-        do{
-            guard let diretorio = recuperaDiretorio() else{return}
-            let dados = try Data(contentsOf: diretorio)
-            
-           let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! [Item]
-            itens = itensSalvos
-            
-        } catch{
-            print(error.localizedDescription)
-        }
+    recuperaItens()
         
+    }
+    
+    func recuperaItens() {
+        itens = ItemDao().recupera()
     }
     
     @objc func adicionarItem() {
@@ -53,29 +47,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func add(_ item: Item) {
         itens.append(item)
-        
+        ItemDao().save(itens)
         if let itensTableView = itensTableView {
             itensTableView.reloadData()
         } else {
             Alerta(controller: self).exibe(title: "Desculpe", mensagem: "Não foi possivel atualizar a tabela")
         }
-        do {
-            let dados = try NSKeyedArchiver.archivedData(withRootObject: itens, requiringSecureCoding: false)
-            guard let caminho = recuperaDiretorio() else {return }
-            try dados.write(to: caminho)
-            
-        }catch{
-            print(error.localizedDescription)
-        }
+      
     }
     
-    func recuperaDiretorio() -> URL? {
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else{return nil}
-        let caminho = diretorio.appendingPathComponent("itens")
-        
-        return caminho
-        
-    }
     
     
     //MARK: - UITableViewDelegate
